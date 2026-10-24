@@ -1,0 +1,5 @@
+const sharp=require('sharp'),path=require('path'),fs=require('fs');
+const q='../_quelle/', o='img/';
+const m=[['Haus_Komplett_fertig_Nordseite.jpg','haus-nord-nachher',1600],['Hausursprung-Nord.jpg','haus-nord-vorher',1000],['Haus_komplett_fertig_Suedseite.jpg','haus-sued-nachher',1600],['Haus_Komplett_fertig_Westseite.jpg','haus-west-nachher',1400],['Fahrzeugflotte-dec21660.jpg','flotte',1920],['Ajdar-Spahiu-7de89553-1de65151.jpg','ajdar',900],['7-928045ad.jpg','mauer-vorher',1000],['3.jpg','mauer-vorher-2',1000],['DS1.jpg','mauer-nachher',1000],['IMG-0040.jpg','mauer-arbeit',1400],['Bad-3.jpg','bad',800],['Flur-nachher.jpg','flur',700],['IMG-20190403-WA0005.jpg','trockenbau',700],['Ausgelegter-Weg.jpg','abdeckung',700],['20220218_171609.jpg','wand-gruen',1600]];
+(async()=>{for(const [f,n,w] of m){const r=await sharp(q+f).rotate().resize({width:w,withoutEnlargement:true}).webp({quality:78}).toFile(o+n+'.webp');console.log(n,r.width,r.height,Math.round(r.size/1024)+'k');}
+await sharp(q+'logo1.png').trim().toFile(o+'logo.png');const l=await sharp(o+'logo.png').metadata();console.log('logo',l.width,l.height);})();

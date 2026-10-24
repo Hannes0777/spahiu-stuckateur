@@ -1,0 +1,171 @@
+# ============================================================
+#  Sveltia CMS – Konfiguration für Spahiu Stuckateur & Maler
+#  Bearbeitet werden JSON-Dateien im Ordner /content/.
+#  Nach dem Speichern baut Cloudflare Pages die Seite neu (ca. 1 Minute).
+# ============================================================
+
+backend:
+  name: github
+  repo: Hannes0777/spahiu-stuckateur   # TODO: Repo anlegen, dann hier eintragen
+  branch: main
+  # Eigener Login-Worker nur für diese Website (E-Mail/Passwort, kein GitHub-Konto nötig)
+  base_url: https://cms-auth-spahiu-stuckateur.ehmann-hannes07.workers.dev   # TODO: Worker deployen
+
+# Bilder landen in site/img, im Inhalt steht der Pfad als "img/dateiname.webp"
+media_folder: site/img
+public_folder: img
+
+media_libraries:
+  default:
+    config:
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1600
+
+locale: de
+
+collections:
+
+  # ----------------------------------------------------------
+  - name: start
+    label: "🏠 Startseite"
+    files:
+      - name: start
+        label: "Startseite bearbeiten"
+        file: content/start.json
+        fields:
+          - { name: eyebrow, label: "Kleine Zeile über der Überschrift", widget: string }
+          - { name: titel_vorn, label: "Überschrift: Anfang", widget: string, hint: "Endet mit einem Leerzeichen, z.B. 'Von der '" }
+          - { name: titel_betont, label: "Überschrift: blau hervorgehobenes Wort", widget: string }
+          - { name: titel_hinten, label: "Überschrift: Ende", widget: string, hint: "Beginnt mit einem Leerzeichen" }
+          - { name: text, label: "Text unter der Überschrift", widget: text }
+          - { name: leistungen_titel, label: "Überschrift der Leistungen", widget: string }
+          - name: leistungen
+            label: "Leistungen auf der Startseite"
+            label_singular: "Leistung"
+            widget: list
+            summary: "{{titel}}"
+            fields:
+              - { name: titel, label: "Name", widget: string }
+              - { name: text, label: "Kurzbeschreibung", widget: text }
+              - { name: anker, label: "Sprung-Ziel auf der Leistungen-Seite", widget: string, hint: "putz, daemmung, maler, altbau oder trockenbau" }
+          - name: karten
+            label: "Karten im Stapel oben (zum Wegwischen)"
+            label_singular: "Karte"
+            widget: list
+            summary: "{{titel}}"
+            hint: "Mit Vorher-Bild lässt sich die Karte umdrehen. Ohne Vorher-Bild zeigt sie nur das fertige Ergebnis."
+            fields:
+              - { name: titel, label: "Titel der Karte", widget: string }
+              - { name: vorher, label: "Vorher-Bild (optional)", widget: image, required: false }
+              - { name: vorher_alt, label: "Vorher-Bild beschreiben (für Sehbehinderte und Google)", widget: string, required: false }
+              - { name: nachher, label: "Fertig-Bild", widget: image }
+              - { name: nachher_alt, label: "Fertig-Bild beschreiben", widget: string, required: false }
+
+  # ----------------------------------------------------------
+  - name: projekte
+    label: "🏗️ Projekte"
+    files:
+      - name: projekte
+        label: "Projekte verwalten"
+        file: content/projekte.json
+        fields:
+          - { name: einleitung_titel, label: "Überschrift der Seite", widget: string }
+          - { name: einleitung_text, label: "Text unter der Überschrift", widget: text }
+          - name: projekte
+            label: "Projekte"
+            label_singular: "Projekt"
+            widget: list
+            summary: "{{titel}} ({{kategorie}})"
+            hint: "Neues Projekt: oben auf 'Hinzufügen' klicken. Die Reihenfolge lässt sich per Ziehen ändern."
+            fields:
+              - { name: titel, label: "Titel", widget: string, hint: "z.B. Wohnhaus, rundum neu verputzt" }
+              - { name: kategorie, label: "Art der Arbeit", widget: string, hint: "z.B. Fassade, Mauersanierung, Bad & Trockenbau" }
+              - { name: text, label: "Was wurde gemacht?", widget: text }
+              - { name: anker, label: "Kurzname für Links (optional)", widget: string, required: false, hint: "Nur Kleinbuchstaben, z.B. wohnhaus. Leer lassen, wenn unklar." }
+              - { name: auf_startseite, label: "Auf der Startseite als Vorher/Nachher zeigen", widget: boolean, default: false, hint: "Dafür braucht das Projekt unten mindestens ein Bild mit 'Vorher' und eins mit 'Nachher'. Es werden die ersten zwei Projekte gezeigt." }
+              - { name: kurztext, label: "Ein Satz für die Startseite", widget: string, required: false }
+              - name: galerie
+                label: "Bilder"
+                label_singular: "Bild"
+                widget: list
+                summary: "{{art}} {{beschriftung}}"
+                fields:
+                  - { name: bild, label: "Bild", widget: image }
+                  - { name: art, label: "Art", widget: select, options: ["Ohne", "Vorher", "Nachher"], default: "Ohne" }
+                  - { name: beschriftung, label: "Beschriftung (optional)", widget: string, required: false, hint: "z.B. Nordseite" }
+                  - { name: alt, label: "Bild beschreiben (für Sehbehinderte und Google)", widget: string, required: false }
+
+  # ----------------------------------------------------------
+  - name: betrieb
+    label: "👷 Der Betrieb"
+    files:
+      - name: betrieb
+        label: "Seite Der Betrieb"
+        file: content/betrieb.json
+        fields:
+          - { name: titel, label: "Überschrift der Seite", widget: string }
+          - { name: einleitung, label: "Text unter der Überschrift", widget: text }
+          - { name: gruppenbild, label: "Gruppenbild vom Team", widget: image }
+          - { name: gruppenbild_alt, label: "Gruppenbild beschreiben", widget: string }
+          - { name: gruppen_eyebrow, label: "Kleine Zeile neben dem Bild", widget: string }
+          - { name: gruppen_titel, label: "Überschrift neben dem Bild", widget: string }
+          - { name: gruppen_text, label: "Text neben dem Bild", widget: text }
+          - name: infos
+            label: "Weitere Infos über den Betrieb"
+            label_singular: "Info-Abschnitt"
+            widget: list
+            summary: "{{titel}}"
+            hint: "Jeder Abschnitt hat eine Überschrift, Text und optional ein Bild. Neue Infos mit 'Hinzufügen' anlegen."
+            fields:
+              - { name: titel, label: "Überschrift", widget: string }
+              - { name: text, label: "Text", widget: text, hint: "Eine Leerzeile erzeugt einen neuen Absatz." }
+              - { name: bild, label: "Bild (optional)", widget: image, required: false }
+              - { name: bild_alt, label: "Bild beschreiben", widget: string, required: false }
+
+  # ----------------------------------------------------------
+  - name: karriere
+    label: "💼 Karriere"
+    files:
+      - name: karriere
+        label: "Seite Karriere"
+        file: content/karriere.json
+        fields:
+          - { name: titel, label: "Überschrift der Seite", widget: string }
+          - { name: einleitung, label: "Text unter der Überschrift", widget: text }
+          - { name: stellen_titel, label: "Überschrift über den Stellen", widget: string }
+          - { name: keine_stellen_text, label: "Text, wenn keine Stelle offen ist", widget: text }
+          - name: stellen
+            label: "Offene Stellen"
+            label_singular: "Stelle"
+            widget: list
+            required: false
+            summary: "{{titel}}"
+            hint: "Keine Stelle eingetragen = es erscheint der Text oben. Stelle löschen, sobald sie besetzt ist."
+            fields:
+              - { name: titel, label: "Stellenbezeichnung", widget: string, hint: "z.B. Stuckateur (m/w/d)" }
+              - { name: art, label: "Art", widget: string, required: false, hint: "z.B. Vollzeit, Ausbildung, Aushilfe" }
+              - { name: ort, label: "Ort", widget: string, required: false }
+              - { name: text, label: "Beschreibung", widget: text, required: false }
+          - { name: bild, label: "Bild neben den Stellen", widget: image }
+          - { name: bild_alt, label: "Bild beschreiben", widget: string }
+
+  # ----------------------------------------------------------
+  - name: kontakt
+    label: "☎️ Kontaktdaten"
+    files:
+      - name: kontakt
+        label: "Telefon, Adresse, Social Media"
+        file: content/kontakt.json
+        fields:
+          - { name: telefon, label: "Telefon", widget: string, hint: "Mit Vorwahl, z.B. 07191 4939315" }
+          - { name: fax, label: "Fax", widget: string, required: false }
+          - { name: email, label: "E-Mail", widget: string }
+          - { name: strasse, label: "Straße und Hausnummer", widget: string }
+          - { name: plz_ort, label: "PLZ und Ort", widget: string }
+          - { name: termin_hinweis, label: "Hinweis zu Terminen im Büro", widget: text }
+          - { name: instagram, label: "Instagram-Link", widget: string }
+          - { name: facebook, label: "Facebook-Link", widget: string }

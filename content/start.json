@@ -1,0 +1,63 @@
+{
+  "eyebrow": "Stuckateur & Maler · Allmersbach im Tal",
+  "titel_vorn": "Von der ",
+  "titel_betont": "Rohwand",
+  "titel_hinten": " bis zur letzten Farbschicht.",
+  "text": "Familienbetrieb seit 2013. Wir verputzen, dämmen, streichen und bauen trocken: im Altbau und im Neubau, für Privatleute und Gewerbe. Vom Angebot bis zur Abnahme sprechen Sie mit denselben Leuten. Und wir hinterlassen die Baustelle sauber.",
+  "leistungen_titel": "Was auf unseren Transportern steht, machen wir auch.",
+  "leistungen": [
+    {
+      "titel": "Innen- & Außenputz",
+      "text": "Neuer Putz auf Rohbau, Ausbesserung am Altbau, Fassaden mit Struktur und Sockel.",
+      "anker": "putz"
+    },
+    {
+      "titel": "Wärmedämmung",
+      "text": "Fassadendämmung, damit das Haus im Winter weniger Heizung braucht.",
+      "anker": "daemmung"
+    },
+    {
+      "titel": "Malerarbeiten",
+      "text": "Wände, Decken, Flure und Fassaden, innen wie außen.",
+      "anker": "maler"
+    },
+    {
+      "titel": "Altbausanierung",
+      "text": "Mauern, Bäder und ganze Häuser, bei denen erst geprüft wird, was bleiben kann.",
+      "anker": "altbau"
+    },
+    {
+      "titel": "Trockenbau",
+      "text": "Abgehängte Decken, neue Wände, Flure und Bäder.",
+      "anker": "trockenbau"
+    }
+  ],
+  "karten": [
+    {
+      "titel": "Wohnhaus, Nordseite",
+      "vorher": "img/haus-nord-vorher.webp",
+      "vorher_alt": "Wohnhaus unter Gerüst vor der Sanierung, Nordseite",
+      "nachher": "img/haus-nord-nachher.webp",
+      "nachher_alt": "Dasselbe Wohnhaus fertig verputzt mit grauem Sockel"
+    },
+    {
+      "titel": "Wohnhaus, Westseite",
+      "vorher": "img/haus-west-vorher.webp",
+      "vorher_alt": "Westseite des Hauses unter Gerüst, Ziegelwand noch frei",
+      "nachher": "img/haus-west-nachher.webp",
+      "nachher_alt": "Westseite fertig verputzt mit neuen weißen Fenstern"
+    },
+    {
+      "titel": "Wohnhaus, Südseite",
+      "nachher": "img/haus-sued-nachher.webp",
+      "nachher_alt": "Rückseite des Hauses mit grauem Balkon, fertig verputzt"
+    },
+    {
+      "titel": "Mauer am Schulgelände",
+      "vorher": "img/mauer-vorher.webp",
+      "vorher_alt": "Abgeplatzte Betonmauer am Schulgelände",
+      "nachher": "img/mauer-nachher.webp",
+      "nachher_alt": "Neu verputzter sandfarbener Mauerpfeiler"
+    }
+  ]
+}

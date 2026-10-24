@@ -1,0 +1,17 @@
+{
+  "titel": "Ein Familienbetrieb, der mit Ihnen redet.",
+  "einleitung": "Ajdar Spahiu gründete die Firma 2013 in Allmersbach im Tal. Heute führt die Familie den Betrieb gemeinsam.",
+  "gruppenbild": "img/team.webp",
+  "gruppenbild_alt": "Das Spahiu-Team in weißer Arbeitskleidung mit Firmenlogo, alle winken in die Kamera, auf einem Kiesplatz vor Bäumen",
+  "gruppen_eyebrow": "Das Team",
+  "gruppen_titel": "Wer bei Ihnen arbeitet, trägt das Spahiu-Logo auf der Brust.",
+  "gruppen_text": "Das Team auf einem Kiesplatz, alle winken in die Kamera. Weiße Arbeitskleidung, Logo vorne drauf: So erkennen Sie uns, wenn wir bei Ihnen vorfahren.",
+  "infos": [
+    {
+      "titel": "Der Kunde ist bei jedem Schritt dabei.",
+      "text": "Neben der Arbeit selbst zählt bei uns der Kontakt zum Kunden. Das fängt beim Gespräch zum Angebot an, geht über die Ausführung bis zur Abnahme und endet bei der Rechnung. Sind unsere Kunden zufrieden, war unsere Arbeit erfolgreich.\n\nWir arbeiten für Privatleute und für Gewerbe, im Altbau wie im Neubau: von der Wohnungssanierung bis zur Mauer am Schulgelände.",
+      "bild": "img/ajdar.webp",
+      "bild_alt": "Ajdar Spahiu zeigt auf die Firmenbeschriftung am Transporter"
+    }
+  ]
+}

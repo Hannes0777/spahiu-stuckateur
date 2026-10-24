@@ -1,0 +1,102 @@
+{
+  "einleitung_titel": "Gerüst auf, Fassade neu, Gerüst ab.",
+  "einleitung_text": "Fotos von unseren Baustellen, aufgenommen von uns selbst. Wo wir ein Vorher haben, zeigen wir es auch.",
+  "projekte": [
+    {
+      "titel": "Wohnhaus, rundum neu verputzt",
+      "kategorie": "Fassade",
+      "auf_startseite": true,
+      "kurztext": "Gerüst, neuer Putz, grauer Sockel, Garagenseite neu gestrichen.",
+      "text": "Ein Einfamilienhaus mit dunkler Holzverkleidung und altem Putz. Wir haben die Fassade auf allen Seiten erneuert: Gerüst, Putz, abgesetzter grauer Sockel, Anstrich. Die Kupferregenrinne blieb sichtbar.",
+      "galerie": [
+        {
+          "bild": "img/haus-nord-vorher.webp",
+          "beschriftung": "",
+          "art": "Vorher",
+          "alt": "Wohnhaus unter Gerüst vor dem neuen Putz"
+        },
+        {
+          "bild": "img/haus-nord-nachher.webp",
+          "beschriftung": "Nordseite",
+          "art": "Nachher",
+          "alt": "Wohnhaus nach der Sanierung, Nordseite"
+        },
+        {
+          "bild": "img/haus-sued-nachher.webp",
+          "beschriftung": "Südseite",
+          "art": "Nachher",
+          "alt": "Rückseite des Hauses mit grauem Balkon, fertig verputzt"
+        },
+        {
+          "bild": "img/haus-west-nachher.webp",
+          "beschriftung": "Westseite",
+          "art": "Nachher",
+          "alt": "Westseite des Hauses mit neuen weißen Fenstern"
+        }
+      ],
+      "anker": "wohnhaus"
+    },
+    {
+      "titel": "Mauer am Schulgelände",
+      "kategorie": "Mauersanierung",
+      "auf_startseite": true,
+      "kurztext": "Aus bröckelndem Beton wurde ein glatter, sandfarbener Pfeiler.",
+      "text": "Der Beton an Mauer und Pfeilern war abgeplatzt und ausgewaschen. Wir haben ihn saniert, neu verputzt und in einem warmen Sandton gestrichen. Das Schild blieb, nur sauberer.",
+      "galerie": [
+        {
+          "bild": "img/mauer-vorher.webp",
+          "beschriftung": "",
+          "art": "Vorher",
+          "alt": "Abgeplatzte Mauer am Schulgelände"
+        },
+        {
+          "bild": "img/mauer-vorher-2.webp",
+          "beschriftung": "",
+          "art": "Vorher",
+          "alt": "Betonsockel mit tiefen Schäden und freigelegtem Boden"
+        },
+        {
+          "bild": "img/mauer-nachher.webp",
+          "beschriftung": "",
+          "art": "Nachher",
+          "alt": "Neu verputzter, sandfarbener Pfeiler mit Schulgelände-Schild"
+        },
+        {
+          "bild": "img/mauer-arbeit.webp",
+          "beschriftung": "Beim Streichen der Pfeiler",
+          "art": "Ohne",
+          "alt": "Zwei Maler streichen einen Mauerpfeiler vor einem Spielplatz"
+        }
+      ],
+      "anker": "schulmauer"
+    },
+    {
+      "titel": "Komplettbad und Flur",
+      "kategorie": "Bad & Trockenbau",
+      "auf_startseite": false,
+      "kurztext": "",
+      "text": "Unter der Dachschräge ein bodengleiches Bad mit großen Fliesen und Nische. Dazu ein Flur mit abgehängter Decke, frisch gestrichenen Wänden und neuer Beleuchtung.",
+      "galerie": [
+        {
+          "bild": "img/bad.webp",
+          "beschriftung": "",
+          "art": "Ohne",
+          "alt": "Dusche unter der Dachschräge mit großformatigen dunklen Fliesen"
+        },
+        {
+          "bild": "img/flur.webp",
+          "beschriftung": "",
+          "art": "Ohne",
+          "alt": "Flur mit abgehängter Decke und frisch gestrichenen weißen Wänden"
+        },
+        {
+          "bild": "img/trockenbau.webp",
+          "beschriftung": "Trockenbau im Altbau",
+          "art": "Ohne",
+          "alt": "Trockenbauwand im Altbau wird verspachtelt"
+        }
+      ],
+      "anker": "bad"
+    }
+  ]
+}

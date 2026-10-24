@@ -1,0 +1,275 @@
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url(../fonts/figtree.woff2) format("woff2")}
+
+/* Tokens
+   blue-d: Logo-Blau abgedunkelt, damit weiße Schrift auf Buttons AA erreicht
+   plate-*: Grau/Blau aus dem Logo, steht hinter den Fotos wie die gekippten Platten
+   radius: bewusst fast eckig (3px) – Gipsplatten haben Kanten */
+:root{
+  --blue:#1c9ddb; --blue-d:#0b6a9e; --grey:#727777; --ink:#23292b; --ink-2:#161b1c;
+  --plaster:#f1f2f0; --paper:#fbfbfa; --line:#d9dcda; --mute:#454d4f;
+  --r:3px; --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;display:flex;flex-direction:column;font-family:"Figtree",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px}
+main{flex:1}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:24px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:10px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* Header: zwei Ebenen */
+.top{padding-block:16px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.top .logo img{height:72px;width:auto}
+.call{text-align:right;line-height:1.2}
+.call small{display:block;color:var(--grey);font-size:.82rem;letter-spacing:.04em}
+.call a{font-weight:800;font-size:1.65rem;text-decoration:none;color:var(--blue-d)}
+.bar{background:var(--ink)}
+.bar .wrap{display:flex;gap:4px;flex-wrap:wrap}
+.bar a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:13px 18px;border-bottom:3px solid transparent}
+.bar a:hover,.bar a[aria-current="page"]{border-color:var(--blue)}
+
+/* Typo */
+.eyebrow{font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-d);margin-bottom:14px}
+h1{font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:1.04;font-weight:800;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--blue-d)}
+h2{font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.1;font-weight:800;letter-spacing:-.015em;max-width:21em}
+h3{font-size:1.3rem;line-height:1.2}
+.lead{margin-top:22px;font-size:1.15rem;max-width:34em;color:#3d4547}
+.prose p+p{margin-top:16px}
+.prose{max-width:38em;color:#2f3638}
+
+/* Buttons */
+.btns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 26px;font:inherit;font-weight:700;text-decoration:none;border:0;cursor:pointer;border-radius:var(--r);background:var(--blue-d);color:#fff}
+.btn:hover{background:#085580}
+.btn.o{background:none;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.o:hover{background:var(--ink);color:#fff}
+.btn.w{background:#fff;color:var(--ink)}
+.btn.w:hover{background:var(--blue);color:#06141c}
+
+/* Sektionen */
+.sect{padding-block:88px}
+.sect.alt{background:var(--plaster)}
+.sect.tight{padding-block:56px}
+.pagehead{padding-block:64px 56px;border-bottom:1px solid var(--line)}
+.pagehead .lead{max-width:40em}
+
+/* Hero */
+.hero{padding-block:72px 96px;display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+/* Signatur: Plattenstapel aus dem Logo hinter dem Foto */
+.stack{position:relative;aspect-ratio:4/4.3}
+.stack::before,.stack::after{content:"";position:absolute;inset:6% 4% 4% 8%}
+.stack::before{background:var(--grey);transform:rotate(5deg);opacity:.9}
+.stack::after{background:var(--blue);transform:rotate(-4deg)}
+.stack img{position:absolute;inset:0 6% 6% 0;width:94%;height:94%;object-fit:cover;z-index:2;transform:rotate(-.6deg)}
+.stack figcaption{position:absolute;z-index:3;right:-4px;bottom:-6px;background:var(--ink);color:#fff;font-size:.8rem;padding:6px 12px;font-weight:600}
+.stack.rev::before{transform:rotate(-5deg)}
+.stack.rev::after{transform:rotate(4deg);inset:6% 8% 4% 4%}
+
+/* Leistungsliste (Start) */
+.services{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px}
+.service{padding:24px 0;border-top:2px solid var(--ink);display:grid;grid-template-columns:70px 1fr;gap:6px 18px;text-decoration:none}
+.service b{font-size:2.6rem;line-height:1;color:var(--blue);font-weight:800}
+.service p{grid-column:2;color:var(--mute)}
+.service:hover h3{color:var(--blue-d);text-decoration:underline;text-underline-offset:4px}
+
+/* Leistungs-Detail */
+.lz{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-block:72px;border-top:2px solid var(--ink)}
+.lz:first-of-type{border-top:0}
+.lz.flip .lz-txt{order:2}
+.lz .num{font-size:3.4rem;line-height:1;font-weight:800;color:var(--blue)}
+.lz h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:8px}
+.lz ul{margin-top:18px;padding-left:1.1em;color:var(--mute)}
+.lz li+li{margin-top:6px}
+.lz li::marker{color:var(--blue-d)}
+.lz img{width:100%;object-fit:cover;aspect-ratio:4/3}
+.lz .note{margin-top:20px;font-size:.95rem}
+.lz .note a{color:var(--blue-d);font-weight:700}
+
+/* Vorher/Nachher */
+.pairs{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:36px 40px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair figure{position:relative}
+.pair img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.pair figcaption,.tagc{position:absolute;left:0;top:0;background:var(--ink);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px}
+.pair figure.n figcaption,.tagc.n{background:var(--blue-d)}
+.pair .cap{grid-column:1/-1;font-size:.95rem;color:var(--mute)}
+.pair .cap b{color:var(--ink)}
+
+/* Projekt-Seite */
+.proj{padding-block:72px;border-top:2px solid var(--ink)}
+.proj:first-of-type{border-top:0}
+.proj header{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:end;margin-bottom:36px}
+.proj header p{color:var(--mute)}
+.gal{display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+.gal figure{position:relative;overflow:hidden;background:var(--plaster)}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal .s4{grid-column:span 4}.gal .s5{grid-column:span 5}.gal .s6{grid-column:span 6}.gal .s7{grid-column:span 7}.gal .s8{grid-column:span 8}
+.gal .a43{aspect-ratio:4/3}.gal .a34{aspect-ratio:3/4}.gal .a32{aspect-ratio:3/2}
+.gal figcaption.cp{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);color:#fff;font-size:.88rem}
+
+/* Betrieb */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.about img{width:100%;aspect-ratio:4/4.2;object-fit:cover;object-position:75% 20%}
+.steps{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);counter-reset:s}
+.steps div{padding:14px 16px 0 0;border-top:3px solid var(--blue);counter-increment:s}
+.steps div::before{content:counter(s,decimal-leading-zero);font-weight:800;color:var(--grey);font-size:.85rem;display:block}
+.steps b{display:block;font-size:1.05rem}
+.steps span{font-size:.9rem;color:var(--mute);display:block;line-height:1.45}
+.band{position:relative}
+.band img{width:100%;aspect-ratio:21/7;object-fit:cover;object-position:50% 60%}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split img{width:100%;object-fit:cover}
+
+/* Kontakt */
+.contact{background:var(--ink);color:#fff;padding-block:80px}
+.contact .eyebrow{color:#7fcdf3}
+.contact h2{color:#fff}
+.contact .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px}
+.contact .tel{display:block;margin-top:24px;font-size:2.6rem;font-weight:800;color:#fff;text-decoration:none;line-height:1.1}
+.contact .tel:hover{color:var(--blue)}
+.contact dl{display:grid;grid-template-columns:auto 1fr;gap:12px 22px}
+.contact dt{color:#9fb0b6;font-weight:600}
+.contact a{color:#fff}
+.contact .fl{margin-top:26px;width:100%;aspect-ratio:16/6;object-fit:cover;object-position:50% 60%}
+.contact .pend{color:#9fb0b6}
+
+/* Formular */
+.form{display:grid;gap:18px;max-width:640px}
+.form label{display:block;font-weight:600;margin-bottom:6px}
+.form input,.form textarea,.form select{width:100%;font:inherit;padding:12px 14px;border:2px solid #aeb5b3;border-radius:var(--r);background:#fff;color:var(--ink)}
+.form textarea{min-height:150px;resize:vertical}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form .err{color:#a3281f;font-size:.9rem;margin-top:4px;min-height:1.2em}
+.form [aria-invalid="true"]{border-color:#a3281f}
+.form .ok{background:#e8f4fa;border-left:4px solid var(--blue-d);padding:14px 18px}
+.kontakt-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:start}
+.side{background:var(--plaster);padding:28px;border-top:3px solid var(--blue)}
+.side dl{display:grid;gap:16px}
+.side dt{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);font-weight:700}
+
+/* Rechtstexte */
+.legal{max-width:44em;padding-block:64px 90px}
+.legal h2{font-size:1.4rem;margin-top:36px;max-width:none}
+.legal p,.legal ul{margin-top:12px;color:#2f3638}
+.legal ul{padding-left:1.2em}
+.todo{background:#fff3cd;padding:2px 6px;border-radius:2px;font-weight:600}
+
+footer{background:var(--ink-2);color:#9fb0b6;font-size:.88rem;padding-block:24px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer nav a{margin-left:18px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+
+@media(max-width:900px){
+  .hero,.about,.contact .grid,.lz,.split,.kontakt-grid,.proj header{grid-template-columns:1fr;gap:40px}
+  .lz.flip .lz-txt{order:0}
+  .services,.pairs{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:18px}
+  .call{text-align:left}
+  .stack{max-width:520px}
+  .sect{padding-block:64px}
+  .gal>*{grid-column:span 12!important}
+  .gal .a34{aspect-ratio:4/3}
+  .form .row{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .bar a{padding:12px 10px;font-size:.88rem}
+  .top .logo img{height:58px}
+  .call a{font-size:1.4rem}
+  .contact .tel{font-size:2rem}
+  .pair{grid-template-columns:1fr}
+  footer nav a{margin:0 14px 0 0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Karten-Stapel im Hero: antippen = umdrehen, nach links ziehen = nächste Karte.
+   Dahinter schauen die nächsten Karten hervor (ersetzt die Platten aus dem Logo, die Schrägstellung bleibt). */
+.deck-wrap{max-width:540px;justify-self:center;width:100%}
+.deck{position:relative;aspect-ratio:4/4.3;perspective:1400px;touch-action:pan-y;user-select:none}
+.card{position:absolute;inset:0 0 10% 12%;opacity:0;pointer-events:none;will-change:transform,opacity;transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .4s ease;transform:translate(-8%,6%) rotate(-4deg)}
+.card.pos-0{z-index:3;opacity:1;pointer-events:auto;cursor:grab;transform:rotate(.4deg)}
+.card.pos-1{z-index:2;opacity:1;transform:translate(-4%,3%) rotate(-2deg)}
+.card.pos-2{z-index:1;opacity:1;transform:translate(-8%,6%) rotate(-4deg)}
+.card.single{cursor:grab}
+.card.pos-3{z-index:0;opacity:1;transform:translate(-12%,9%) rotate(-6deg)}
+.card.pos-1 .face::after,.card.pos-2 .face::after,.card.pos-3 .face::after{opacity:1}
+.face::after{content:'';position:absolute;inset:0;background:rgba(15,20,22,.28);opacity:0;pointer-events:none;transition:opacity .5s ease}
+.card.dragging{transition:none;cursor:grabbing}
+.card.snap{transition:transform .5s cubic-bezier(.34,1.45,.5,1)}
+.card.out-left{z-index:4;opacity:1;transform:translateX(-125%) rotate(-16deg);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.card.out-right{z-index:4;opacity:1;transform:translateX(125%) rotate(16deg);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.card-in{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;transition:transform .8s cubic-bezier(.34,1.2,.5,1)}
+.card.flipped .card-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.5)}
+.face.back{transform:rotateY(180deg)}
+.face img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.badge{position:absolute;left:0;top:0;background:var(--ink);color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px}
+.badge.n{background:var(--blue-d)}
+/* Hinweise direkt auf der Karte, erscheinen verzögert und leicht transparent */
+.hint{position:absolute;left:50%;bottom:7%;transform:translate(-50%,8px);display:flex;align-items:center;gap:10px;white-space:nowrap;background:rgba(20,25,27,.78);color:#fff;font-weight:700;font-size:.92rem;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .6s,transform .6s}
+.deck.show-tap .card.pos-0:not(.single) .face.front .hint,.deck.show-swipe .card.pos-0 .face.back .hint,.deck.show-swipe .card.single.pos-0 .face.front .hint{opacity:1;transform:translate(-50%,0)}
+.tapico{width:16px;height:16px;border-radius:50%;border:2px solid #fff;position:relative;flex:none}
+.tapico::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(255,255,255,.7);animation:ripple 1.6s infinite}
+.swipeico{font-style:normal;font-size:1.2rem;line-height:1;animation:nudge 1.4s infinite}
+@keyframes ripple{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.2);opacity:0}}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-7px)}}
+.deck-ui{margin-top:22px}
+.deck-nav{display:flex;align-items:center;gap:14px;font-weight:700;font-size:.9rem}
+.deck-nav span{flex:1}
+.ring{width:34px;height:34px;flex:none;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:3}
+.ring-bg{stroke:var(--line)}
+.ring-fg{stroke:var(--blue-d);stroke-dasharray:94.25;stroke-dashoffset:94.25;transition:stroke-dashoffset .6s cubic-bezier(.22,1,.36,1)}
+.deck-nav button{width:44px;height:44px;border:2px solid var(--ink);background:none;border-radius:var(--r);font:inherit;font-size:1.2rem;cursor:pointer;color:var(--ink)}
+.deck-nav button:hover{background:var(--ink);color:#fff}
+.deck-nav button:active{transform:scale(.92)}
+
+/* Social Media: Marken-Logos, damit sofort erkennbar ist, wohin der Link führt */
+.soc-ico{width:1.25em;height:1.25em;flex:none}
+.soc{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border-radius:var(--r);color:#fff;text-decoration:none;font-weight:700;transition:transform .2s,filter .2s}
+.soc:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.soc.ig{background:linear-gradient(45deg,#f58529,#dd2a7b 50%,#8134af)}
+.soc.fb{background:#1877f2}
+.soc-row{display:flex;flex-wrap:wrap;gap:10px}
+.soc-row .soc{padding:10px 16px;font-size:.95rem}
+footer a.soc-f{display:inline-flex;align-items:center;gap:7px}
+footer a.soc-f .soc-ico{width:1.15em;height:1.15em}
+@media(prefers-reduced-motion:reduce){.card,.card-in,.hint,.soc{transition:none}.tapico::after,.swipeico{animation:none}}
+
+/* Sauberkeit: eigenes Hauptthema, Foto der ausgelegten Folie neben dem Text */
+.sect.sauber{background:var(--ink);color:#e9eeee}
+.sect.sauber .wrap{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center}
+.sect.sauber img{width:100%;height:auto;display:block;transform:rotate(-1.2deg);box-shadow:0 20px 40px -22px rgba(0,0,0,.7)}
+.sect.sauber h2{color:#fff}
+.sect.sauber h2 em{font-style:normal;color:var(--blue)}
+.sect.sauber .eyebrow{color:#7cc8ee}
+.sect.sauber .prose{color:#c9d3d5}
+.clean{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.clean li{padding-left:30px;position:relative;font-weight:600}
+.clean li::before{content:"";position:absolute;left:0;top:.35em;width:16px;height:10px;border-left:3px solid var(--blue);border-bottom:3px solid var(--blue);transform:rotate(-45deg)}
+@media(max-width:800px){.sect.sauber .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* kleine Social-Icons oben, neben der Telefonnummer */
+.top-soc{display:flex;gap:6px;margin-left:auto;margin-right:22px}
+.top-soc a{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);transition:background .2s,color .2s,box-shadow .2s}
+.top-soc a:hover{color:#fff;background:var(--blue-d);box-shadow:none}
+.top-soc .soc-ico{width:18px;height:18px}
+
+/* Karriere: Stellenliste, ehrlicher Platzhalter solange keine echte Stelle feststeht */
+.jobs{display:grid;gap:14px;margin-top:22px}
+.job{padding:18px 20px;border-left:4px solid var(--blue);background:var(--plaster);display:grid;gap:4px}
+.job b{font-size:1.1rem}
+.job span{color:var(--mute)}
+.job a{font-weight:700;color:var(--blue-d);margin-top:4px}
+.job.ph{border:2px dashed var(--grey);background:none}
+
+/* helle Variante, wo direkt danach das dunkle Kontaktband folgt */
+.sect.sauber.light{background:var(--plaster);color:var(--ink)}
+.sect.sauber.light h2{color:var(--ink)}
+.sect.sauber.light h2 em{color:var(--blue-d)}
+.sect.sauber.light .eyebrow{color:var(--blue-d)}
+.sect.sauber.light .prose{color:var(--mute)}
