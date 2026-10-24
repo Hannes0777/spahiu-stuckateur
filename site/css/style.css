@@ -26,7 +26,7 @@ a{color:inherit}
 .call{text-align:right;line-height:1.2}
 .call small{display:block;color:var(--grey);font-size:.82rem;letter-spacing:.04em}
 .call a{font-weight:800;font-size:1.65rem;text-decoration:none;color:var(--blue-d)}
-.bar{background:var(--ink)}
+.bar{background:var(--ink);position:sticky;top:0;z-index:50}
 .bar .wrap{display:flex;gap:4px;flex-wrap:wrap}
 .bar a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:13px 18px;border-bottom:3px solid transparent}
 .bar a:hover,.bar a[aria-current="page"]{border-color:var(--blue)}
@@ -273,3 +273,10 @@ footer a.soc-f .soc-ico{width:1.15em;height:1.15em}
 .sect.sauber.light h2 em{color:var(--blue-d)}
 .sect.sauber.light .eyebrow{color:var(--blue-d)}
 .sect.sauber.light .prose{color:var(--mute)}
+
+/* Handy: Menü bleibt oben sichtbar (sticky) und läuft einzeilig, ohne dass man nach oben scrollen muss */
+@media(max-width:700px){
+  .bar .wrap{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-inline:12px;gap:0}
+  .bar .wrap::-webkit-scrollbar{display:none}
+  .bar a{flex:none;padding:14px 12px;font-size:.9rem}
+}

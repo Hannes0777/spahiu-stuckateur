@@ -34,15 +34,16 @@ const shell = (file, title, desc, body) => `<!DOCTYPE html>
     <div class="top-soc"><a href="${IG_URL}" target="_blank" rel="noopener" aria-label="Instagram">${IG}</a><a href="${FB_URL}" target="_blank" rel="noopener" aria-label="Facebook">${FB}</a></div>
     <div class="call"><small>Anrufen, Büro Allmersbach</small><a href="${telHref}">${esc(K.telefon)}</a></div>
   </div>
-  <nav class="bar" aria-label="Hauptnavigation"><div class="wrap">
-    ${NAV.map(([f,l]) => `<a href="${f}"${f===file?' aria-current="page"':''}>${l}</a>`).join('\n    ')}
-  </div></nav>
 </header>
+<nav class="bar" aria-label="Hauptnavigation"><div class="wrap">
+    ${NAV.map(([f,l]) => `<a href="${f}"${f===file?' aria-current="page"':''}>${l}</a>`).join('\n    ')}
+</div></nav>
 <main id="inhalt">
 ${body}
 </main>
 <footer><div class="wrap"><span>© Spahiu Stuckateur &amp; Maler GmbH · ${esc(K.strasse)} · ${esc(K.plz_ort)}</span>
 <nav aria-label="Rechtliches und Social Media"><a class="soc-f" href="${IG_URL}" target="_blank" rel="noopener">${IG}Instagram</a><a class="soc-f" href="${FB_URL}" target="_blank" rel="noopener">${FB}Facebook</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="https://www.webdesign-ehmann.de" target="_blank" rel="noopener">Erstellt von Webdesign Ehmann</a></nav></div></footer>
+<script>var c=document.querySelector('.bar [aria-current]');if(c&&c.scrollIntoView)c.parentNode.scrollLeft=Math.max(0,c.offsetLeft-24);</script>
 <script src="js/main.js" defer></script>
 </body>
 </html>
@@ -317,8 +318,6 @@ ${BE.infos.map((b, i) => `<section class="sect${i % 2 ? '' : ' alt'}">
 </section>`).join('\n\n')}
 
 <section class="band"><img src="img/flotte.webp" width="1920" height="697" alt="Mehrere weiße Firmentransporter mit Spahiu-Logo nebeneinander geparkt" loading="lazy"></section>
-
-${sauberSec}
 
 <section class="sect alt">
   <div class="wrap split">
