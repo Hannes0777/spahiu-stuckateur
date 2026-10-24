@@ -3,7 +3,14 @@
   "einleitung": "Wir sind ein Familienbetrieb aus Allmersbach im Tal und arbeiten im Altbau wie im Neubau. Wenn Sie anpacken können und sauber arbeiten wollen, melden Sie sich.",
   "stellen_titel": "Was wir aktuell suchen.",
   "keine_stellen_text": "Hier stehen die aktuell offenen Stellen. Der Betrieb trägt sie ein, sobald sie feststehen.",
-  "stellen": [],
+  "stellen": [
+    {
+      "titel": "Test",
+      "art": "Test",
+      "ort": "",
+      "text": ""
+    }
+  ],
   "bild": "img/team.webp",
   "bild_alt": "Das Spahiu-Team in weißer Arbeitskleidung mit Firmenlogo winkt in die Kamera"
 }
