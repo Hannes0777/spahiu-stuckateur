@@ -1,15 +1,15 @@
 # ============================================================
 #  Sveltia CMS – Konfiguration für Spahiu Stuckateur & Maler
 #  Bearbeitet werden JSON-Dateien im Ordner /content/.
-#  Nach dem Speichern baut Cloudflare Pages die Seite neu (ca. 1 Minute).
+#  Nach dem Speichern baut GitHub Pages die Seite neu (ca. 1 Minute).
 # ============================================================
 
 backend:
   name: github
-  repo: Hannes0777/spahiu-stuckateur   # TODO: Repo anlegen, dann hier eintragen
+  repo: Hannes0777/spahiu-stuckateur
   branch: main
   # Eigener Login-Worker nur für diese Website (E-Mail/Passwort, kein GitHub-Konto nötig)
-  base_url: https://cms-auth-spahiu-stuckateur.ehmann-hannes07.workers.dev   # TODO: Worker deployen
+  base_url: https://cms-auth-spahiu-stuckateur.ehmann-hannes07.workers.dev
 
 # Bilder landen in site/img, im Inhalt steht der Pfad als "img/dateiname.webp"
 media_folder: site/img

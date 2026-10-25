@@ -6,6 +6,12 @@
   if (!deck) return;
   var cards = Array.prototype.slice.call(deck.querySelectorAll('.card'));
   var cap = document.getElementById('deck-cap');
+  // Bilder der hinteren Karten und Rückseiten erst nach dem Laden holen, damit die erste Karte sofort da ist
+  function loadAll() {
+    Array.prototype.forEach.call(deck.querySelectorAll('img[data-src]'), function (im) { im.src = im.dataset.src; im.removeAttribute('data-src'); });
+  }
+  if (document.readyState === 'complete') setTimeout(loadAll, 300); else window.addEventListener('load', function () { setTimeout(loadAll, 300); });
+  deck.addEventListener('pointerdown', loadAll, { once: true });
   var ring = document.getElementById('deck-ring');
   var cur = 0, busy = false;
   var flips = 0, moves = 0, hintTimer;

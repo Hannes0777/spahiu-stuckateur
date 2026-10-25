@@ -26,7 +26,7 @@ a{color:inherit}
 .top{padding-block:16px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .top .logo img{height:72px;width:auto}
 .call{text-align:right;line-height:1.2}
-.call small{display:block;color:var(--grey);font-size:.82rem;letter-spacing:.04em}
+.call small{display:block;color:var(--mute);font-size:.82rem;letter-spacing:.04em}
 .call a{font-weight:800;font-size:1.65rem;text-decoration:none;color:var(--blue-d)}
 .bar{background:var(--ink);position:sticky;top:0;z-index:50}
 .bar .wrap{display:flex;gap:4px;flex-wrap:wrap}
@@ -86,7 +86,7 @@ h3{font-size:1.3rem;line-height:1.2}
 .lz{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-block:72px;border-top:2px solid var(--ink)}
 .lz:first-of-type{border-top:0}
 .lz.flip .lz-txt{order:2}
-.lz .num{font-size:3.4rem;line-height:1;font-weight:800;color:var(--blue)}
+.lz .num{font-size:3.4rem;line-height:1;font-weight:800;color:var(--blue-d)}
 .lz h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:8px}
 .lz ul{margin-top:18px;padding-left:1.1em;color:var(--mute)}
 .lz li+li{margin-top:6px}
@@ -155,7 +155,7 @@ h3{font-size:1.3rem;line-height:1.2}
 .kontakt-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:start}
 .side{background:var(--plaster);padding:28px;border-top:3px solid var(--blue)}
 .side dl{display:grid;gap:16px}
-.side dt{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);font-weight:700}
+.side dt{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:700}
 
 /* Rechtstexte */
 .legal{max-width:44em;padding-block:64px 90px}
@@ -239,7 +239,7 @@ footer a:hover{color:#fff;text-decoration:underline}
 .soc{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border-radius:var(--r);color:#fff;text-decoration:none;font-weight:700;transition:transform .2s,filter .2s}
 .soc:hover{transform:translateY(-2px);filter:brightness(1.08)}
 .soc.ig{background:linear-gradient(45deg,#f58529,#dd2a7b 50%,#8134af)}
-.soc.fb{background:#1877f2}
+.soc.fb{background:#1562cf}
 .soc-row{display:flex;flex-wrap:wrap;gap:10px}
 .soc-row .soc{padding:10px 16px;font-size:.95rem}
 footer a.soc-f{display:inline-flex;align-items:center;gap:7px}

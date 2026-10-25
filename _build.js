@@ -53,7 +53,7 @@ ${body}
 
 const DECK = ST.karten.map(k => ({ t: k.titel, v: k.vorher ? [k.vorher.replace(/^img\/|\.webp$/g, ''), 1000, 1333, k.vorher_alt || k.titel] : null, n: [k.nachher.replace(/^img\/|\.webp$/g, ''), 1200, 900, k.nachher_alt || k.titel] }));
 const deckCards = DECK.map((d, i) => {
-  const img = (x, extra) => '<img src="img/' + x[0] + '.webp" width="' + x[1] + '" height="' + x[2] + '" alt="' + x[3] + '" decoding="async"' + (extra || '') + '>';
+  const img = (x, extra) => '<img ' + (extra ? 'src="img/' + x[0] + '.webp"' : 'src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="img/' + x[0] + '.webp"') + ' width="' + x[1] + '" height="' + x[2] + '" alt="' + x[3] + '" decoding="async"' + (extra || '') + '>';
   const tap = '<span class="hint" aria-hidden="true"><i class="tapico"></i>Antippen: fertig ansehen</span>';
   const swp = '<span class="hint" aria-hidden="true"><i class="swipeico">←</i>Nach links ziehen: nächstes Projekt</span>';
   const front = d.v
