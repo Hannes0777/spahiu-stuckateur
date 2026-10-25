@@ -25,6 +25,7 @@ const shell = (file, title, desc, body) => `<!DOCTYPE html>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preload" href="fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<script>(function(d){if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js');setTimeout(function(){if(!d.hasAttribute('data-rv'))d.classList.remove('js')},3500)}})(document.documentElement)</script>
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>

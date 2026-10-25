@@ -24,3 +24,24 @@
     form.reset();
   });
 })();
+
+// Sanftes Einblenden beim Scrollen. Ohne IntersectionObserver oder bei reduzierter Bewegung bleibt alles einfach sichtbar.
+(function () {
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = document.querySelectorAll('.lz, .pair, .gal figure, .service, .about > *, .split > *, .steps div, .proj header, .job, .side, .sect.sauber .wrap > *, .contact .grid > *');
+  if (!els.length) return;
+  document.documentElement.setAttribute('data-rv', '');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  Array.prototype.forEach.call(els, function (el, i) {
+    var sibs = el.parentNode.children, n = Array.prototype.indexOf.call(sibs, el);
+    el.classList.add('rv');
+    el.style.setProperty('--d', (Math.min(n, 3) * 0.09) + 's');
+    io.observe(el);
+  });
+})();

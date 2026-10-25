@@ -327,3 +327,36 @@ footer a.soc-f .soc-ico{width:1.15em;height:1.15em}
   .lz img,.lz.flip img,.about img,.split img{box-shadow:8px 8px 0 var(--navy)}
   .hero-field .deck-wrap{padding-right:10px}
 }
+
+/* Bewegung: Einblenden beim Scrollen, Fotos heben sich von ihrer Plattenkante ab, Buttons ebenso, Hero-Text kommt gestaffelt */
+.lz img{--o:12px;--c:var(--navy)}
+.lz.flip img{--c:var(--slate)}
+.pair figure img{--o:6px;--c:var(--navy)}
+.pair figure.n img{--c:var(--blue-d)}
+.gal figure{--o:8px;--c:var(--navy)}
+.about img,.split img{--o:12px;--c:var(--blue-d)}
+@media(max-width:900px){.lz img,.lz.flip img,.about img,.split img{--o:8px}}
+.lz img,.pair figure img,.gal figure,.about img,.split img{box-shadow:var(--o) var(--o) 0 var(--c);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)}
+@media(hover:hover){
+  .lz img:hover,.pair figure img:hover,.gal figure:hover,.about img:hover,.split img:hover{transform:translate(-4px,-4px);box-shadow:calc(var(--o) + 4px) calc(var(--o) + 4px) 0 var(--c)}
+  .btn:hover{transform:translate(-2px,-2px)}
+  .btn:not(.o):not(.ow):hover{box-shadow:4px 4px 0 var(--navy-2)}
+  .btn.w:hover{box-shadow:4px 4px 0 var(--blue)}
+  .btn:active{transform:none;box-shadow:none}
+}
+.btn{transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.service b{transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.service:hover b{transform:translateX(6px)}
+.js .rv{opacity:0;translate:0 24px;transition:opacity .7s ease var(--d,0s),translate .7s cubic-bezier(.22,1,.36,1) var(--d,0s),transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)}
+.js .rv.in{opacity:1;translate:0 0}
+@keyframes rise{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
+.hero-field .hero>div:first-child>*{animation:rise .6s cubic-bezier(.22,1,.36,1) both}
+.hero-field .hero>div:first-child>:nth-child(2){animation-delay:.07s}
+.hero-field .hero>div:first-child>:nth-child(3){animation-delay:.14s}
+.hero-field .hero>div:first-child>:nth-child(4){animation-delay:.21s}
+@media(prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;translate:none;transition:none}
+  .hero-field .hero>div:first-child>*{animation:none}
+  .btn,.service b,.lz img,.pair figure img,.gal figure,.about img,.split img{transition:none}
+  .btn:hover,.service:hover b,.lz img:hover,.pair figure img:hover,.gal figure:hover,.about img:hover,.split img:hover{transform:none}
+}

@@ -136,7 +136,8 @@
     else if (e.key === 'ArrowLeft') go(-1);
     else if (e.key === 'ArrowRight') go(1);
   });
-  document.getElementById('deck-next').addEventListener('click', function () { go(1); });
+  var nextBtn = document.getElementById('deck-next');
+  if (nextBtn) nextBtn.addEventListener('click', function () { go(1); });
   layout();
   label();
   scheduleHint();
