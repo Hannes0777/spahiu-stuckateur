@@ -1,5 +1,6 @@
-// Karten-Stapel im Hero: antippen = umdrehen, nach links ziehen = nächste Karte.
-// Die Hinweise erscheinen verzögert auf der Karte: erst "Antippen", nach dem Umdrehen "Nach links ziehen".
+// Karten-Stapel im Hero: antippen = umdrehen, nach links ziehen oder Pfeil rechts = nächste Karte.
+// Pfeil links holt die zuletzt weggeflogene Karte von links zurück auf den Stapel.
+// Hinweise erscheinen auf jeder neuen Karte nach kurzer Ruhe, bis man beides zweimal benutzt hat.
 (function () {
   var deck = document.getElementById('deck');
   if (!deck) return;
@@ -7,7 +8,7 @@
   var cap = document.getElementById('deck-cap');
   var ring = document.getElementById('deck-ring');
   var cur = 0, busy = false;
-  var flippedOnce = false, swipedOnce = false, tapTimer, swipeTimer;
+  var flips = 0, moves = 0, hintTimer;
 
   function layout() {
     cards.forEach(function (c, i) {
@@ -28,18 +29,15 @@
   }
   function hideHints() {
     deck.classList.remove('show-tap', 'show-swipe');
-    clearTimeout(tapTimer);
-    clearTimeout(swipeTimer);
+    clearTimeout(hintTimer);
   }
-  function scheduleTap() {
-    if (flippedOnce) return;
-    tapTimer = setTimeout(function () { deck.classList.add('show-tap'); }, 2500);
-  }
-  function scheduleSwipe() {
-    if (swipedOnce) return;
-    swipeTimer = setTimeout(function () {
-      if (cards[cur].classList.contains('flipped') || cards[cur].classList.contains('single')) deck.classList.add('show-swipe');
-    }, 1200);
+  function scheduleHint() {
+    clearTimeout(hintTimer);
+    hintTimer = setTimeout(function () {
+      var c = cards[cur];
+      if (c.classList.contains('flipped') || c.classList.contains('single')) { if (moves < 2) deck.classList.add('show-swipe'); }
+      else if (flips < 2) deck.classList.add('show-tap');
+    }, 1000);
   }
 
   function flip() {
@@ -47,31 +45,47 @@
     if (cc.classList.contains('single')) { go(1); return; }
     hideHints();
     cards[cur].classList.toggle('flipped');
-    flippedOnce = true;
+    flips++;
     label();
-    if (cards[cur].classList.contains('flipped')) scheduleSwipe();
+    scheduleHint();
   }
   function go(dir) {
     if (busy) return;
     busy = true;
     hideHints();
-    swipedOnce = true;
+    moves++;
     var old = cards[cur];
-    old.classList.remove('pos-0', 'snap');
-    old.classList.add(dir > 0 ? 'out-left' : 'out-right');
-    old.style.transform = '';
-    cur = (cur + (dir > 0 ? 1 : -1) + cards.length) % cards.length;
-    var n = cards[cur];
-    n.classList.remove('out-left', 'out-right', 'flipped', 'dragging', 'snap');
-    n.style.transform = '';
-    layout();
-    label();
-    // erst ganz hinaus fliegen lassen, dann hinter den Stapel zurück (ganz nach hinten, nicht auf Platz 2)
-    setTimeout(function () {
-      old.classList.remove('out-left', 'out-right', 'flipped');
+    if (dir > 0) {
+      old.classList.remove('pos-0', 'snap');
+      old.classList.add('out-left');
       old.style.transform = '';
+      cur = (cur + 1) % cards.length;
+      var n = cards[cur];
+      n.classList.remove('out-left', 'out-right', 'flipped', 'dragging', 'snap');
+      n.style.transform = '';
       layout();
-    }, 330);
+      // erst ganz hinaus fliegen lassen, dann hinter den Stapel zurück (ganz nach hinten, nicht auf Platz 2)
+      setTimeout(function () {
+        old.classList.remove('out-left', 'flipped');
+        old.style.transform = '';
+        layout();
+      }, 330);
+    } else {
+      // zurück: die vorherige Karte kommt von links wieder auf den Stapel, die aktuelle rutscht eine Position nach hinten
+      cur = (cur - 1 + cards.length) % cards.length;
+      var p = cards[cur];
+      p.classList.remove('pos-0', 'pos-1', 'pos-2', 'pos-3', 'out-right', 'flipped', 'dragging', 'snap');
+      p.style.transform = '';
+      p.style.transition = 'none';
+      p.classList.add('out-left');
+      void p.offsetWidth;
+      p.style.transition = '';
+      p.classList.remove('out-left');
+      layout();
+      setTimeout(function () { old.classList.remove('flipped'); }, 400);
+    }
+    label();
+    scheduleHint();
     setTimeout(function () { busy = false; }, 800);
   }
 
@@ -106,7 +120,7 @@
     else {
       c.classList.add('snap');
       c.style.transform = '';
-      if (!moved) flip(); else if (c.classList.contains('flipped')) scheduleSwipe(); else scheduleTap();
+      if (!moved) flip(); else scheduleHint();
     }
   });
   deck.addEventListener('pointercancel', function () {
@@ -126,5 +140,5 @@
   document.getElementById('deck-prev').addEventListener('click', function () { go(-1); });
   layout();
   label();
-  scheduleTap();
+  scheduleHint();
 })();

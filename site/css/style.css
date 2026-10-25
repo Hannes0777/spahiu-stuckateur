@@ -216,8 +216,8 @@ footer a:hover{color:#fff;text-decoration:underline}
 .badge{position:absolute;left:0;top:0;background:var(--ink);color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px}
 .badge.n{background:var(--blue-d)}
 /* Hinweise direkt auf der Karte, erscheinen verzögert und leicht transparent */
-.hint{position:absolute;left:50%;bottom:7%;transform:translate(-50%,8px);display:flex;align-items:center;gap:10px;white-space:nowrap;background:rgba(20,25,27,.78);color:#fff;font-weight:700;font-size:.92rem;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .6s,transform .6s}
-.deck.show-tap .card.pos-0:not(.single) .face.front .hint,.deck.show-swipe .card.pos-0 .face.back .hint,.deck.show-swipe .card.single.pos-0 .face.front .hint{opacity:1;transform:translate(-50%,0)}
+.hint{position:absolute;left:50%;bottom:7%;transform:translate(-50%,8px);display:flex;align-items:center;gap:10px;white-space:nowrap;background:rgba(20,25,27,.6);color:#fff;font-weight:700;font-size:.92rem;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.deck.show-tap .card.pos-0:not(.single) .face.front .hint,.deck.show-swipe .card.pos-0 .face.back .hint,.deck.show-swipe .card.single.pos-0 .face.front .hint{opacity:.9;transform:translate(-50%,0)}
 .tapico{width:16px;height:16px;border-radius:50%;border:2px solid #fff;position:relative;flex:none}
 .tapico::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(255,255,255,.7);animation:ripple 1.6s infinite}
 .swipeico{font-style:normal;font-size:1.2rem;line-height:1;animation:nudge 1.4s infinite}
@@ -280,11 +280,10 @@ footer a.soc-f .soc-ico{width:1.15em;height:1.15em}
 .sect.sauber.light .eyebrow{color:var(--blue-d)}
 .sect.sauber.light .prose{color:var(--mute)}
 
-/* Handy: Menü bleibt oben sichtbar (sticky) und läuft einzeilig, ohne dass man nach oben scrollen muss */
+/* Handy: Menü bleibt oben sichtbar (sticky), in zwei Reihen statt seitlich scrollen */
 @media(max-width:700px){
-  .bar .wrap{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-inline:12px;gap:0}
-  .bar .wrap::-webkit-scrollbar{display:none}
-  .bar a{flex:none;padding:14px 12px;font-size:.9rem}
+  .bar .wrap{display:grid;grid-template-columns:repeat(3,1fr);padding-inline:8px;gap:0}
+  .bar a{text-align:center;padding:10px 6px;font-size:.92rem}
 }
 
 
