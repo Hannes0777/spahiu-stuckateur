@@ -123,7 +123,7 @@ pages['index.html'] = shell('index.html',
 ${deckCards}
     </div>
     <div class="deck-ui">
-      <div class="deck-nav"><button type="button" id="deck-prev" aria-label="Vorheriges Projekt">←</button><svg class="ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" class="ring-bg"/><circle cx="18" cy="18" r="15" class="ring-fg" id="deck-ring"/></svg><span id="deck-cap" aria-live="polite">${esc(DECK[0].t)} · 1/${DECK.length}</span><button type="button" id="deck-next" aria-label="Nächstes Projekt">→</button></div>
+      <div class="deck-nav"><svg class="ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" class="ring-bg"/><circle cx="18" cy="18" r="15" class="ring-fg" id="deck-ring"/></svg><span id="deck-cap" aria-live="polite">${esc(DECK[0].t)} · 1/${DECK.length}</span><button type="button" id="deck-next" aria-label="Nächstes Projekt">→</button></div>
     </div>
   </div>
 </div></section>

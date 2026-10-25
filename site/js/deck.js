@@ -1,5 +1,5 @@
 // Karten-Stapel im Hero: antippen = umdrehen, nach links ziehen oder Pfeil rechts = nächste Karte.
-// Pfeil links holt die zuletzt weggeflogene Karte von links zurück auf den Stapel.
+// go(-1) (Pfeiltaste links) holt die zuletzt weggeflogene Karte von links zurück auf den Stapel.
 // Hinweise erscheinen auf jeder neuen Karte nach kurzer Ruhe, bis man beides zweimal benutzt hat.
 (function () {
   var deck = document.getElementById('deck');
@@ -137,7 +137,6 @@
     else if (e.key === 'ArrowRight') go(1);
   });
   document.getElementById('deck-next').addEventListener('click', function () { go(1); });
-  document.getElementById('deck-prev').addEventListener('click', function () { go(-1); });
   layout();
   label();
   scheduleHint();
