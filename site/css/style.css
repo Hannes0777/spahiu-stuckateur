@@ -2,11 +2,13 @@
 
 /* Tokens
    blue-d: Logo-Blau abgedunkelt, damit weiße Schrift auf Buttons AA erreicht
+   navy/slate: tiefes Blau und dunkles Logo-Grau als Farbfelder, damit helle Fotos (weiße Fassaden, Himmel) nicht auf hellem Grund verschwimmen
+   tint: kühler Grund statt Weiß hinter Fotogalerien
    plate-*: Grau/Blau aus dem Logo, steht hinter den Fotos wie die gekippten Platten
    radius: bewusst fast eckig (3px) – Gipsplatten haben Kanten */
 :root{
   --blue:#1c9ddb; --blue-d:#0b6a9e; --grey:#727777; --ink:#23292b; --ink-2:#161b1c;
-  --plaster:#f1f2f0; --paper:#fbfbfa; --line:#d9dcda; --mute:#454d4f;
+  --navy:#0a4466; --navy-2:#07334f; --slate:#566063; --tint:#dde7ed; --sky:#8fd3f5; --plaster:#f1f2f0; --paper:#fbfbfa; --line:#d9dcda; --mute:#454d4f;
   --r:3px; --maxw:1180px;
 }
 *{box-sizing:border-box;margin:0}
@@ -54,7 +56,11 @@ h3{font-size:1.3rem;line-height:1.2}
 .sect{padding-block:88px}
 .sect.alt{background:var(--plaster)}
 .sect.tight{padding-block:56px}
-.pagehead{padding-block:64px 56px;border-bottom:1px solid var(--line)}
+.pagehead{padding-block:64px 64px;background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.pagehead::before{content:"";position:absolute;right:-6%;top:-30%;width:42%;height:160%;background:var(--navy-2);transform:skewX(-14deg)}
+.pagehead .wrap{position:relative}
+.pagehead .eyebrow{color:var(--sky)}
+.pagehead .lead{color:#d3e4ee}
 .pagehead .lead{max-width:40em}
 
 /* Hero */
@@ -125,8 +131,8 @@ h3{font-size:1.3rem;line-height:1.2}
 .split img{width:100%;object-fit:cover}
 
 /* Kontakt */
-.contact{background:var(--ink);color:#fff;padding-block:80px}
-.contact .eyebrow{color:#7fcdf3}
+.contact{background:var(--navy-2);color:#fff;padding-block:80px}
+.contact .eyebrow{color:var(--sky)}
 .contact h2{color:#fff}
 .contact .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px}
 .contact .tel{display:block;margin-top:24px;font-size:2.6rem;font-weight:800;color:#fff;text-decoration:none;line-height:1.1}
@@ -241,16 +247,16 @@ footer a.soc-f .soc-ico{width:1.15em;height:1.15em}
 @media(prefers-reduced-motion:reduce){.card,.card-in,.hint,.soc{transition:none}.tapico::after,.swipeico{animation:none}}
 
 /* Sauberkeit: eigenes Hauptthema, Foto der ausgelegten Folie neben dem Text */
-.sect.sauber{background:var(--ink);color:#e9eeee}
+.sect.sauber{background:none;color:var(--ink)}
 .sect.sauber .wrap{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center}
-.sect.sauber img{width:100%;height:auto;display:block;transform:rotate(-1.2deg);box-shadow:0 20px 40px -22px rgba(0,0,0,.7)}
-.sect.sauber h2{color:#fff}
-.sect.sauber h2 em{font-style:normal;color:var(--blue)}
-.sect.sauber .eyebrow{color:#7cc8ee}
-.sect.sauber .prose{color:#c9d3d5}
+.sect.sauber img{width:100%;height:auto;display:block;transform:rotate(-1.2deg);box-shadow:-14px 14px 0 var(--blue)}
+.sect.sauber h2{color:var(--ink)}
+.sect.sauber h2 em{font-style:normal;color:var(--blue-d)}
+.sect.sauber .eyebrow{color:var(--blue-d)}
+.sect.sauber .prose{color:var(--mute)}
 .clean{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
 .clean li{padding-left:30px;position:relative;font-weight:600}
-.clean li::before{content:"";position:absolute;left:0;top:.35em;width:16px;height:10px;border-left:3px solid var(--blue);border-bottom:3px solid var(--blue);transform:rotate(-45deg)}
+.clean li::before{content:"";position:absolute;left:0;top:.35em;width:16px;height:10px;border-left:3px solid var(--blue-d);border-bottom:3px solid var(--blue-d);transform:rotate(-45deg)}
 @media(max-width:800px){.sect.sauber .wrap{grid-template-columns:1fr;gap:28px}}
 
 /* kleine Social-Icons oben, neben der Telefonnummer */
@@ -268,7 +274,7 @@ footer a.soc-f .soc-ico{width:1.15em;height:1.15em}
 .job.ph{border:2px dashed var(--grey);background:none}
 
 /* helle Variante, wo direkt danach das dunkle Kontaktband folgt */
-.sect.sauber.light{background:var(--plaster);color:var(--ink)}
+.sect.sauber.light{background:var(--plaster)}
 .sect.sauber.light h2{color:var(--ink)}
 .sect.sauber.light h2 em{color:var(--blue-d)}
 .sect.sauber.light .eyebrow{color:var(--blue-d)}
@@ -279,4 +285,51 @@ footer a.soc-f .soc-ico{width:1.15em;height:1.15em}
   .bar .wrap{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-inline:12px;gap:0}
   .bar .wrap::-webkit-scrollbar{display:none}
   .bar a{flex:none;padding:14px 12px;font-size:.9rem}
+}
+
+
+/* Farbfelder: Hero, Leistungen und Seitenköpfe tragen Farbe, damit helle Fotos Kontrast haben */
+.hero-field{background:var(--navy);color:#fff;position:relative;overflow:hidden;clip-path:polygon(0 0,100% 0,100% calc(100% - 44px),0 100%);padding-bottom:44px}
+.hero-field::before{content:"";position:absolute;right:-8%;top:-20%;width:52%;height:150%;background:var(--navy-2);transform:skewX(-14deg)}
+.hero-field .hero{position:relative;padding-block:64px 88px}
+.hero-field .eyebrow{color:var(--sky)}
+.hero-field h1 em{color:var(--sky)}
+.hero-field .lead{color:#d3e4ee}
+.btn.ow{background:none;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.btn.ow:hover{background:#fff;color:var(--ink)}
+.hero-field .btn.w:hover{background:var(--sky)}
+/* Plattenstapel aus dem Logo hinter den Karten: Logo-Grau und Logo-Blau, flach und in Schräglage */
+.hero-field .deck::before,.hero-field .deck::after{content:"";position:absolute;z-index:-1}
+.hero-field .deck::before{inset:3% -4% 4% 14%;background:var(--grey);transform:rotate(5deg)}
+.hero-field .deck::after{inset:8% 2% 0 8%;background:var(--blue);transform:rotate(-3deg)}
+.hero-field .face{padding:8px}
+.hero-field .deck-nav{color:#fff}
+.hero-field .deck-nav button{border-color:#fff;color:#fff}
+.hero-field .deck-nav button:hover{background:#fff;color:var(--ink)}
+.hero-field .ring-bg{stroke:rgba(255,255,255,.3)}
+.hero-field .ring-fg{stroke:var(--sky)}
+
+.sect.slate{background:var(--slate);color:#fff}
+.sect.slate .eyebrow{color:#e6f4fb}
+.sect.slate h2{color:#fff}
+.sect.slate .service{border-top-color:#fff}
+.sect.slate .service b{color:var(--sky)}
+.sect.slate .service p{color:#dbe3e5}
+.sect.slate .service:hover h3{color:var(--sky)}
+
+/* kühler Grund statt Weiß hinter Fotos, dazu eine harte Plattenkante wie bei den gekippten Platten im Logo */
+.tint,.sect.tint{background:var(--tint)}
+.lz img,.pair img,.gal img{box-shadow:none}
+.lz img{box-shadow:12px 12px 0 var(--navy)}
+.lz.flip img{box-shadow:-12px 12px 0 var(--slate)}
+.pair figure img{box-shadow:6px 6px 0 var(--navy)}
+.pair figure.n img{box-shadow:6px 6px 0 var(--blue-d)}
+.gal figure{box-shadow:8px 8px 0 var(--navy)}
+.gal figure:nth-child(even){box-shadow:-8px 8px 0 var(--slate)}
+.about img,.split img{box-shadow:12px 12px 0 var(--blue-d)}
+@media(max-width:900px){
+  .hero-field{clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),0 100%);padding-bottom:28px}
+  .hero-field .hero{padding-block:44px 64px}
+  .lz img,.lz.flip img,.about img,.split img{box-shadow:8px 8px 0 var(--navy)}
+  .hero-field .deck-wrap{padding-right:10px}
 }

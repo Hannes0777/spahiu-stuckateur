@@ -111,12 +111,12 @@ const pages = {};
 pages['index.html'] = shell('index.html',
   'Stuckateur & Maler in Allmersbach im Tal | Spahiu GmbH',
   'Putz, Wärmedämmung, Malerarbeiten, Altbausanierung und Trockenbau. Familienbetrieb aus Allmersbach im Tal seit 2013. Jetzt Angebot anfragen.',
-`<section class="wrap hero">
+`<section class="hero-field"><div class="wrap hero">
   <div>
     <p class="eyebrow">${esc(ST.eyebrow)}</p>
     <h1>${esc(ST.titel_vorn)}<em>${esc(ST.titel_betont)}</em>${esc(ST.titel_hinten)}</h1>
     <p class="lead">${esc(ST.text)}</p>
-    <div class="btns"><a class="btn" href="kontakt.html">Angebot anfragen</a><a class="btn o" href="projekte.html">Fertige Projekte ansehen</a></div>
+    <div class="btns"><a class="btn w" href="kontakt.html">Angebot anfragen</a><a class="btn ow" href="projekte.html">Fertige Projekte ansehen</a></div>
   </div>
   <div class="deck-wrap">
     <div class="deck" id="deck" role="group" aria-roledescription="Karten" aria-label="Projekte vorher und nachher">
@@ -126,11 +126,11 @@ ${deckCards}
       <div class="deck-nav"><button type="button" id="deck-prev" aria-label="Vorheriges Projekt">←</button><svg class="ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" class="ring-bg"/><circle cx="18" cy="18" r="15" class="ring-fg" id="deck-ring"/></svg><span id="deck-cap" aria-live="polite">${esc(DECK[0].t)} · 1/${DECK.length}</span><button type="button" id="deck-next" aria-label="Nächstes Projekt">→</button></div>
     </div>
   </div>
-</section>
+</div></section>
 
 ${sauberSec}
 
-<section class="sect alt">
+<section class="sect slate">
   <div class="wrap">
     <p class="eyebrow">Leistungen</p>
     <h2>${esc(ST.leistungen_titel)}</h2>
@@ -140,7 +140,7 @@ ${sauberSec}
   </div>
 </section>
 
-<section class="sect">
+<section class="sect tint">
   <div class="wrap">
     <p class="eyebrow">Projekte</p>
     <h2>Vorher und nachher, von uns gemacht.</h2>
@@ -179,7 +179,7 @@ pages['leistungen.html'] = shell('leistungen.html',
   <p class="lead">Putz, Dämmung, Farbe, Sanierung und Trockenbau bekommen Sie bei uns aus einer Hand. Das spart Abstimmung zwischen Firmen und hält die Baustelle kürzer.</p>
 </div></section>
 
-<div class="wrap">
+<div class="tint"><div class="wrap">
   <section class="lz" id="putz">
     <div class="lz-txt">
       <span class="num">01</span>
@@ -234,7 +234,7 @@ pages['leistungen.html'] = shell('leistungen.html',
     </div>
     <img src="img/trockenbau.webp" width="700" height="933" alt="Mitarbeiter verspachtelt eine Trockenbauwand in einem Altbauraum" loading="lazy" style="max-height:560px;object-position:50% 30%">
   </section>
-</div>
+</div></div>
 
 ${sauberSec.replace('sect sauber','sect sauber light')}
 
@@ -250,7 +250,7 @@ pages['projekte.html'] = shell('projekte.html',
   <p class="lead">${esc(PR.einleitung_text)}</p>
 </div></section>
 
-<div class="wrap">
+<div class="tint"><div class="wrap">
 ${PR.projekte.map(p => {
   const n = p.galerie.length;
   const cls = n === 1 ? 's12 a32' : n === 2 ? 's6 a43' : n === 4 ? 's6 a43' : 's4 a43';
@@ -271,7 +271,7 @@ ${PR.projekte.map(p => {
     </div>
   </section>`;
 }).join('\n\n')}
-</div>
+</div></div>
 
 ${sauberSec.replace('sect sauber','sect sauber light')}
 
